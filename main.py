@@ -6,7 +6,9 @@ from Bonus import *
 
 
 pygame.init()
-ecran = pygame.display.set_mode((800, 600),pygame.FULLSCREEN)
+#ecran = pygame.display.set_mode((800, 600),pygame.FULLSCREEN)
+ecran = pygame.display.set_mode((800, 600),pygame.RESIZABLE)
+
 
 
 # Fonction permettant d'afficher un texte
@@ -51,6 +53,10 @@ while True:
             if pygame.sprite.collide_mask(joueur, proj):
                 joueur.kill()
                 game_over = True
+                print("Ship destroyed")
+                pygame.display.quit()
+                pygame.quit()
+                sys.exit()
                 
     score = 0
     def affiche_score():
@@ -66,6 +72,7 @@ while True:
                 b.kill()
 
     game_over=False
+
     while not game_over:
         print("dans la boucle")
         vaisseau_detruit()
@@ -75,11 +82,13 @@ while True:
         projectiles.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                pygame.display.quit()
+                pygame.quit()
                 sys.exit()
-            if event.type == creation_proj:
+            elif event.type == creation_proj:
                 projectile = random_bullet(3)
                 projectiles.add(projectile)
-            if event.type == creation_bonus:
+            elif event.type == creation_bonus:
                 nouveau_bonus = create_bonus()
                 bonus.add(nouveau_bonus)
 

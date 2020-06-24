@@ -2,9 +2,13 @@ import pygame
 from pygame.locals import *
 import random
 
-from config import WIDTH, HEIGHT
+#from config import WIDTH, HEIGHT
 
-# Fonction permettant de crÃƒÂ©er alÃƒÂ©atoirement un projectile
+WIDTH = 800
+HEIGHT = 600
+
+
+# Fonction permettant de créer aléatoirement un projectile
 def random_bullet(speed):
     random_or = random.randint(1, 4)
     if random_or == 1:  # Up -> Down
@@ -52,4 +56,3 @@ class Bullet(pygame.sprite.Sprite):
             self.image = pygame.transform.rotate(self.image, 90)
         elif self.vspeed > 0:
             self.image = pygame.transform.rotate(self.image, 180)
-git
