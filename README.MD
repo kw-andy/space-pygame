@@ -23,3 +23,8 @@ There are a list of bugs/amemdment that needs to be corrected/changed :
 - Cannot escape manually
 - No message after we lose with replay option
 
+The game is run on Python3 with Pygame.
+
+
+|Python3|
+
