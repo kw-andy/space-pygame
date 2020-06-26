@@ -6,7 +6,7 @@ from Bonus import *
 
 
 pygame.init()
-#ecran = pygame.display.set_mode((800, 600),pygame.FULLSCREEN)
+# instead of putting pygame.FULLSCREEN, I've put it to pygame.RESIZABLE
 ecran = pygame.display.set_mode((800, 600),pygame.RESIZABLE)
 
 
