@@ -1,9 +1,12 @@
 import pygame
 from pygame.locals import *
 import random
-from config import WIDTH, HEIGHT
 
-# Fonction permettant de crÃ©er des bonus Ã  un emplacement alÃ©atoire
+
+WIDTH = 800 
+HEIGHT = 600
+
+# Fonction permettant de créer des bonus à  un emplacement aléatoire
 def create_bonus():
     bonus = Bonus(random.randint(20, WIDTH * 0.9), random.randint(20, HEIGHT * 0.9), 10)
     return bonus
