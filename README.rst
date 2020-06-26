@@ -23,7 +23,8 @@ There are a list of bugs/amemdment that needs to be corrected/changed :
 - Cannot escape manually
 - No message after we lose with replay option
 
-The game is run on Python3 and used Pygame as a library.
+The game is run on Python3 with Pygame.
 
-[![](https://img.shields.io/badge/Python3-status-blue.svg?maxAge=3600)](https://www.python.org/download/releases/3.0/)
+
+|Python3|
 
