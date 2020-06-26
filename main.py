@@ -8,7 +8,7 @@ from Bonus import *
 pygame.init()
 # instead of putting pygame.FULLSCREEN, I've put it to pygame.RESIZABLE
 # the size of the screen match the size of the image, 750 * 421
-ecran = pygame.display.set_mode((750, 421),pygame.RESIZABLE)
+ecran = pygame.display.set_mode((800,600),pygame.RESIZABLE)
 
 
 
@@ -26,7 +26,7 @@ def display_text(text, color, x, y, font, police, centered=True):
 pygame.key.set_repeat(5, 5)
 couleur = (54, 110, 34)
 
-image_fond = pygame.image.load("Pictures/galaxie.jpg")
+image_fond = pygame.image.load("Pictures/outer_space_stars_shroud_155267_800x600.jpg")
 
 while True:
     joueur = Vaisseau(400, 300, 5)
@@ -55,9 +55,11 @@ while True:
                 joueur.kill()
                 game_over = True
                 print("Ship destroyed")
+                '''
                 pygame.display.quit()
                 pygame.quit()
                 sys.exit()
+                '''
                 
     score = 0
     def affiche_score():
