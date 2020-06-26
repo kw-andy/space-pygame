@@ -7,7 +7,8 @@ from Bonus import *
 
 pygame.init()
 # instead of putting pygame.FULLSCREEN, I've put it to pygame.RESIZABLE
-ecran = pygame.display.set_mode((800, 600),pygame.RESIZABLE)
+# the size of the screen match the size of the image, 750 * 421
+ecran = pygame.display.set_mode((750, 421),pygame.RESIZABLE)
 
 
 
