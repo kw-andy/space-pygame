@@ -19,7 +19,7 @@ The game is run as followed:
 
 There are a list of bugs/amemdment that needs to be corrected/changed :
 
-- Size of windows which does not fit the size of the image
+- Size of windows which does not fit the size of the image - done
 - Cannot escape manually
 - No message after we lose with replay option
 
