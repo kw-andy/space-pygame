@@ -25,5 +25,5 @@ There are a list of bugs/amemdment that needs to be corrected/changed :
 
 The game is run on Python3 and used Pygame as a library.
 
-[![](https://img.shields.io/badge/Python3-status-blue.svg?maxAge=3600)](https://www.python.org/download/releases/3.0/)
+[![](https://img.shields.io/badge/Python3-status-blue.svg?maxAge=3600)](https://www.python.org/download/releases/3.0/) [![](https://img.shields.io/badge/Pygame-status-green.svg?maxAge=3600)]()
 
