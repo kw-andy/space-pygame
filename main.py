@@ -107,3 +107,8 @@ while True:
                 continue
             if event.key == K_r:
                 recommencer = True
+            elif event.key == K_q:
+                pygame.display.quit()
+                pygame.quit()
+                sys.exit()    
+
