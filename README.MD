@@ -15,15 +15,24 @@ The game is run as followed:
 - If you got hit by a laser shot, the game stops
 
 
+These are the few screenshots of the game below:
+
+Normal game
+
 ![image](Pictures/space_pygame.png)
+
+Option after you lose:
+
+![image](Pictures/endgame_lose_screen.png)
 
 There are a list of bugs/amemdment that needs to be corrected/changed :
 
 - Size of windows which does not fit the size of the image - done
-- Cannot escape manually
-- No message after we lose with replay option
+- Cannot escape manually - done
+- No message after we lose with replay option - done
 
 The game is run on Python3 and used Pygame as a library.
+
 
 [![](https://img.shields.io/badge/Python3-status-blue.svg?maxAge=3600)](https://www.python.org/download/releases/3.0/) [![](https://img.shields.io/badge/Pygame-status-green.svg?maxAge=3600)]()
 

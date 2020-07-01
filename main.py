@@ -23,6 +23,17 @@ def display_text(text, color, x, y, font, police, centered=True):
         textrect.centery = y
     ecran.blit(message, textrect)
 
+def display_text1(text, color, x, y, font, police, centered=True):
+    font = pygame.font.SysFont(font, police, True)
+    message = font.render(text, True, color)
+    textrect = message.get_rect()
+    if centered:
+        textrect.centerx = x
+        textrect.centery = y
+    ecran.blit(message, textrect)
+        
+    
+
 
 pygame.key.set_repeat(5, 5)
 couleur = (54, 110, 34)
@@ -55,19 +66,14 @@ while True:
             if pygame.sprite.collide_mask(joueur, proj):
                 joueur.kill()
                 game_over = True
-                print("Ship destroyed")
-                '''
-                pygame.display.quit()
-                pygame.quit()
-                sys.exit()
-                '''
+
                 
     score = 0
     def affiche_score():
            global score
            text = "Score: " + str(score)
+           display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, False)
 
-           display_text(text, (255, 255, 255,), 15, 15, "Calibri", 20, False)
     def get_bonus():
         global score
         for b in bonus:
@@ -78,7 +84,6 @@ while True:
     game_over=False
 
     while not game_over:
-        print("dans la boucle")
         vaisseau_detruit()
         update_ecran()
         get_bonus()
@@ -100,11 +105,19 @@ while True:
                 continue
             joueur.deplace(pygame.key.name(event.key))
 
+    if game_over:
+            lost_text = "You lose."
+            display_text(lost_text, (255, 69, 0), 400, 250, "Calibri", 30, True)
+            play_again_text = "To play again, press r. To quit, press q"
+            display_text(play_again_text, (255, 69, 0), 400, 280, "Calibri", 30, True)            
+            pygame.display.update()     
+
     recommencer = False
     while not recommencer:
         for event in pygame.event.get():
             if not hasattr(event, "key"):
                 continue
+                #print("zenla")
             if event.key == K_r:
                 recommencer = True
             elif event.key == K_q:
