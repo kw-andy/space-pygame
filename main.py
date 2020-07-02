@@ -22,19 +22,7 @@ def display_text(text, color, x, y, font, police, centered=True):
         textrect.centerx = x
         textrect.centery = y
     ecran.blit(message, textrect)
-
-def display_text1(text, color, x, y, font, police, centered=True):
-    font = pygame.font.SysFont(font, police, True)
-    message = font.render(text, True, color)
-    textrect = message.get_rect()
-    if centered:
-        textrect.centerx = x
-        textrect.centery = y
-    ecran.blit(message, textrect)
-        
-    
-
-
+     
 pygame.key.set_repeat(5, 5)
 couleur = (54, 110, 34)
 
