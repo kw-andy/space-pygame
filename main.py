@@ -11,7 +11,7 @@ pygame.init()
 # the size of the screen match the size of the image, 750 * 421
 ecran = pygame.display.set_mode((800,600),pygame.RESIZABLE)
 
-
+image_fond = pygame.image.load("Pictures/outer_space_stars_shroud_155267_800x600.jpg")
 
 # Fonction permettant d'afficher un texte
 def display_text(text, color, x, y, font, police, centered=True):
@@ -22,11 +22,38 @@ def display_text(text, color, x, y, font, police, centered=True):
         textrect.centerx = x
         textrect.centery = y
     ecran.blit(message, textrect)
-     
+
+def vaisseau_detruit():
+    global game_over 
+    for proj in projectiles:
+        if pygame.sprite.collide_mask(joueur, proj):
+            joueur.kill()
+            game_over = True   
+
+def get_bonus():
+    global score
+    for b in bonus:
+        if pygame.sprite.collide_mask(joueur, b):
+            score += 10
+            b.kill()  
+
+def affiche_score():
+        global score
+        text = "Score: " + str(score)
+        display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, False)   
+
+def update_ecran():
+    ecran.fill(couleur)
+    ecran.blit(image_fond, [0, 0])
+    vaisseaux.draw(ecran)
+    projectiles.draw(ecran)
+    bonus.draw(ecran)
+    affiche_score()
+                
 pygame.key.set_repeat(5, 5)
 couleur = (54, 110, 34)
 
-image_fond = pygame.image.load("Pictures/outer_space_stars_shroud_155267_800x600.jpg")
+
 
 while True:
     joueur = Vaisseau(400, 300, 5)
@@ -39,35 +66,9 @@ while True:
     pygame.time.set_timer(creation_proj, 1000)
     creation_bonus = pygame.USEREVENT + 2
     pygame.time.set_timer(creation_bonus, 1000)
-
-    def update_ecran():
-        ecran.fill(couleur)
-        ecran.blit(image_fond, [0, 0])
-        vaisseaux.draw(ecran)
-        projectiles.draw(ecran)
-        bonus.draw(ecran)
-        affiche_score()
-
-    def vaisseau_detruit():
-        global game_over 
-        for proj in projectiles:
-            if pygame.sprite.collide_mask(joueur, proj):
-                joueur.kill()
-                game_over = True
-
-                
+              
     score = 0
-    def affiche_score():
-           global score
-           text = "Score: " + str(score)
-           display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, False)
-
-    def get_bonus():
-        global score
-        for b in bonus:
-            if pygame.sprite.collide_mask(joueur, b):
-                score += 10
-                b.kill()
+    affiche_score()
 
     game_over=False
 
