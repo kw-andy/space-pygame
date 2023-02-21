@@ -20,6 +20,6 @@ class Bonus(pygame.sprite.Sprite):
 
     # Fonction permettant de créer des bonus à un emplacement aléatoire
     @classmethod
-    def create_bonus_classe(cls):
+    def create_bonus(cls):
         bonus = Bonus(random.uniform(20, WIDTH * 0.9), random.uniform(20, HEIGHT * 0.9), 10)
         return bonus
