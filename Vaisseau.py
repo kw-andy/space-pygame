@@ -16,3 +16,10 @@ class Vaisseau(pygame.sprite.Sprite):
             dx, dy = options[touche]
             self.rect.x += dx
             self.rect.y += dy
+    @classmethod
+    def hit_ship(cls, joueur, vaisseaux, projectiles):
+        for proj in projectiles:
+            if pygame.sprite.collide_mask(joueur, proj):
+                joueur.kill()
+                return True
+        return False

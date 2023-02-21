@@ -26,14 +26,6 @@ def display_text(text, color, x, y, font, police, centered=True):
     ecran.blit(message, textrect)
 
 
-def vaisseau_detruit():
-    global game_over 
-    for proj in projectiles:
-        if pygame.sprite.collide_mask(joueur, proj):
-            joueur.kill()
-            game_over = True   
-
-
 def get_bonus():
     global score
     for b in bonus:
@@ -79,7 +71,7 @@ while True:
     game_over = False
 
     while not game_over:
-        vaisseau_detruit()
+        game_over = Vaisseau.hit_ship(joueur, vaisseaux, projectiles)
         update_ecran()
         get_bonus()
         pygame.display.flip()
