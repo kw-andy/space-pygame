@@ -85,7 +85,7 @@ while True:
                 projectile = random_bullet(3)
                 projectiles.add(projectile)
             elif event.type == creation_bonus:
-                nouveau_bonus = Bonus.create_bonus_classe()
+                nouveau_bonus = Bonus.create_bonus()
                 bonus.add(nouveau_bonus)
 
             if not hasattr(event, "key"):
@@ -95,7 +95,7 @@ while True:
     if game_over:
         lost_text = "You lose."
         display_text(lost_text, (255, 69, 0), 400, 250, "Calibri", 30, True)
-        play_again_text = "To play again, press r. To quit, press q"
+        play_again_text = "To play again, press r(etry). To quit, press q(uit)"
         display_text(play_again_text, (255, 69, 0), 400, 280, "Calibri", 30, True)
         pygame.display.update()
 
