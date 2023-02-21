@@ -9,6 +9,8 @@ class Vaisseau(pygame.sprite.Sprite):
         self.rect.x = xpos
         self.rect.y = ypos
 
+    options = {"up": -10, "down": +10, "left": -10, "right": +10}
+
     def deplace(self, touche):
         if touche == "up":
             self.rect.y -= 10

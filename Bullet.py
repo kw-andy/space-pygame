@@ -39,7 +39,7 @@ class Bullet(pygame.sprite.Sprite):
         self.vspeed = vspeed
         self.set_direction()
 
-    # Mise a  jour de la position et test de la collision avec un bord
+    # Mise à jour de la position et test de la collision avec un bord
     def update(self):
         self.rect.x += self.hspeed
         self.rect.y += self.vspeed

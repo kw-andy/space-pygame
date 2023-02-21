@@ -2,7 +2,9 @@ import sys
 
 from Vaisseau import *
 from Bullet import *
-from Bonus import *
+
+from Bonus import Bonus
+
 
 pygame.init()
 # instead of putting pygame.FULLSCREEN, I've put it to pygame.RESIZABLE
@@ -91,7 +93,7 @@ while True:
                 projectile = random_bullet(3)
                 projectiles.add(projectile)
             elif event.type == creation_bonus:
-                nouveau_bonus = create_bonus()
+                nouveau_bonus = Bonus.create_bonus_classe()
                 bonus.add(nouveau_bonus)
 
             if not hasattr(event, "key"):
