@@ -71,7 +71,7 @@ while True:
     game_over = False
 
     while not game_over:
-        game_over = Vaisseau.hit_ship(joueur, vaisseaux, projectiles)
+        game_over = Vaisseau.hit_ship(joueur, projectiles)
         update_ecran()
         get_bonus()
         pygame.display.flip()
