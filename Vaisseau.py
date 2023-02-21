@@ -1,8 +1,9 @@
 import pygame
 
+
 class Vaisseau(pygame.sprite.Sprite):
     def __init__(self, xpos, ypos, speed):
-        super(Vaisseau,self).__init__()
+        super(Vaisseau, self).__init__()
         self.image = pygame.image.load("Pictures/SpaceShip.png")
         self.rect = self.image.get_rect()
         self.rect.x = xpos

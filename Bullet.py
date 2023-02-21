@@ -1,24 +1,29 @@
 import pygame
-from pygame.locals import *
 import random
-
-#from config import WIDTH, HEIGHT
+# L'import dessous est utile, sans cela, le jeu casse
+from pygame.locals import *
 
 WIDTH = 800
 HEIGHT = 600
 
 
 # Fonction permettant de créer aléatoirement un projectile
+
+
 def random_bullet(speed):
     random_or = random.randint(1, 4)
-    if random_or == 1:  # Up -> Down
+    # Up -> Down
+    if random_or == 1:
         return Bullet(random.randint(0, WIDTH), 0, 0, speed)
-    elif random_or == 2:  # Right -> Left
+    # Right -> Left
+    elif random_or == 2:
         return Bullet(WIDTH, random.randint(0, HEIGHT), -speed, 0)
-    elif random_or == 3:  # Down -> Up
+    # Down -> Up
+    elif random_or == 3:
         return Bullet(random.randint(0, WIDTH), HEIGHT, 0, -speed)
-    elif random_or == 4:  # Left -> Right
-       return Bullet(0, random.randint(0, HEIGHT), speed, 0)
+    # Left -> Right
+    elif random_or == 4:
+        return Bullet(0, random.randint(0, HEIGHT), speed, 0)
 
 
 # Classe des projectiles

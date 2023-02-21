@@ -1,9 +1,10 @@
 Space pygame
 ============
 
-The game was created by Bintou Yattara, a student from the [Pot au fab project](http://potaufab.fr/).
 
-Pot au fab project is a non-profit project, was created by the [AGECA](https://www.ageca.org/) with the help of [Ici Lab](http://icietlab.cc/) and [Le Petit Fablab de Paris](https://lepetitfablabdeparis.fr/) with the sponsorship of the [Orange foundation](https://www.fondationorange.com/en).
+Pot au fab project is a non-profit project, was created by the [AGECA](https://www.ageca.org/) with the help 
+of [Ici Lab](http://icietlab.cc/) and [Le Petit Fablab de Paris](https://lepetitfablabdeparis.fr/) 
+with the sponsorship of the [Orange foundation](https://www.fondationorange.com/en).
 
 It helps kids from local project (11th district of Paris) to get familiar with programming, teaching them to use programming tools like Python and Electronics like Arduino.
 
@@ -34,5 +35,6 @@ There are a list of bugs/amemdment that needs to be corrected/changed :
 The game is run on Python3 and used Pygame as a library.
 
 
-[![](https://img.shields.io/badge/Python3-status-blue.svg?maxAge=3600)](https://www.python.org/download/releases/3.0/) [![](https://img.shields.io/badge/Pygame-status-green.svg?maxAge=3600)]()
+[![](https://img.shields.io/badge/Python3-status-blue.svg?maxAge=3600)](https://www.python.org/download/releases/3.0/) 
+[![](https://img.shields.io/badge/Pygame-status-green.svg?maxAge=3600)]()
 
