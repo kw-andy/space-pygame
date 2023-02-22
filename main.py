@@ -2,28 +2,18 @@ import sys
 
 from Vaisseau import *
 from Bullet import *
-
 from Bonus import Bonus
+from Display import Screen
 
 
 pygame.init()
 # instead of putting pygame.FULLSCREEN, I've put it to pygame.RESIZABLE
 # the size of the screen match the size of the image, 750 * 421
 ecran = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
-
+screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
 image_fond = pygame.image.load("Pictures/outer_space_stars_shroud_155267_800x600.jpg")
 
 # Fonction permettant d'afficher un texte
-
-
-def display_text(text, color, x, y, font, police, centered=True):
-    font = pygame.font.SysFont(font, police, True)
-    message = font.render(text, True, color)
-    textrect = message.get_rect()
-    if centered:
-        textrect.centerx = x
-        textrect.centery = y
-    ecran.blit(message, textrect)
 
 
 def get_bonus():
@@ -37,7 +27,7 @@ def get_bonus():
 def affiche_score():
     global score
     text = "Score: " + str(score)
-    display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, False)
+    Screen.display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, screen, False)
 
 
 def update_ecran():
@@ -47,6 +37,7 @@ def update_ecran():
     projectiles.draw(ecran)
     bonus.draw(ecran)
     affiche_score()
+    # Screen.display_score(score)
                 
 
 pygame.key.set_repeat(5, 5)
@@ -67,6 +58,7 @@ while True:
               
     score = 0
     affiche_score()
+    # Screen.display_score(score)
 
     game_over = False
 
@@ -94,9 +86,9 @@ while True:
 
     if game_over:
         lost_text = "You lose."
-        display_text(lost_text, (255, 69, 0), 400, 250, "Calibri", 30, True)
+        Screen.display_text(lost_text, (255, 69, 0), 400, 250, "Calibri", 30, screen, True)
         play_again_text = "To play again, press r(etry). To quit, press q(uit)"
-        display_text(play_again_text, (255, 69, 0), 400, 280, "Calibri", 30, True)
+        Screen.display_text(play_again_text, (255, 69, 0), 400, 280, "Calibri", 30, screen, True)
         pygame.display.update()
 
     recommencer = False
