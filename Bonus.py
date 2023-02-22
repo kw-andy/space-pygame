@@ -23,3 +23,11 @@ class Bonus(pygame.sprite.Sprite):
     def create_bonus(cls):
         bonus = Bonus(random.uniform(20, WIDTH * 0.9), random.uniform(20, HEIGHT * 0.9), 10)
         return bonus
+
+    @classmethod
+    def receive_bonus(cls, joueur, score, bonus):
+        for b in bonus:
+            if pygame.sprite.collide_mask(joueur, b):
+                score += 10
+                b.kill()
+        return score
