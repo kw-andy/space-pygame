@@ -16,16 +16,6 @@ image_fond = pygame.image.load("Pictures/outer_space_stars_shroud_155267_800x600
 # Fonction permettant d'afficher un texte
 
 
-#def display_text(text, color, x, y, font, police, centered=True):
-#    font = pygame.font.SysFont(font, police, True)
-#    message = font.render(text, True, color)
-#    textrect = message.get_rect()
-#    if centered:
-#        textrect.centerx = x
-#        textrect.centery = y
-#    ecran.blit(message, textrect)
-
-
 def get_bonus():
     global score
     for b in bonus:
