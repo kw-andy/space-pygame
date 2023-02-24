@@ -24,20 +24,13 @@ def get_bonus():
             b.kill()  
 
 
-def affiche_score():
-    global score
-    text = "Score: " + str(score)
-    Screen.display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, screen, False)
-
-
 def update_ecran():
     ecran.fill(couleur)
     ecran.blit(image_fond, [0, 0])
     vaisseaux.draw(ecran)
     projectiles.draw(ecran)
     bonus.draw(ecran)
-    affiche_score()
-    # Screen.display_score(score)
+    Screen.display_score(screen, score)
                 
 
 pygame.key.set_repeat(5, 5)
@@ -57,15 +50,15 @@ while True:
     pygame.time.set_timer(creation_bonus, 1000)
               
     score = 0
-    affiche_score()
-    # Screen.display_score(score)
+    Screen.display_score(screen, bonus)
 
     game_over = False
 
     while not game_over:
         game_over = Vaisseau.hit_ship(joueur, projectiles)
         update_ecran()
-        get_bonus()
+        # get_bonus()
+        Bonus.receive_bonus(joueur, bonus)
         pygame.display.flip()
         projectiles.update()
         for event in pygame.event.get():

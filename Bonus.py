@@ -25,9 +25,11 @@ class Bonus(pygame.sprite.Sprite):
         return bonus
 
     @classmethod
-    def receive_bonus(cls, joueur, score, bonus):
+    def receive_bonus(cls, joueur, bonus):
+        score = 0
         for b in bonus:
             if pygame.sprite.collide_mask(joueur, b):
                 score += 10
                 b.kill()
+            return score
         return score

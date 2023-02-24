@@ -13,8 +13,7 @@ class Screen(pygame.sprite.Sprite):
         return screen.blit(message, textrect)
 
     @classmethod
-    def display_score(cls, score):
+    def display_score(cls, screen, score):
         text = "Score: " + str(score)
-        test_var =  Screen.display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, False)
-        return test_var
+        Screen.display_text(text, (255, 255, 255,), 15, 15, "Calibri", 30, screen, False)
 
