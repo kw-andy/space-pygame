@@ -1,4 +1,5 @@
 import sys
+from pygame.locals import K_r, K_q, K_ESCAPE
 
 from Vaisseau import *
 from Bullet import *
@@ -13,6 +14,10 @@ ecran = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
 screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
 image_fond = pygame.image.load("Pictures/outer_space_stars_shroud_155267_800x600.jpg")
 
+# Contrôle du framerate pour ralentir le jeu
+FPS = 30  # Vous pouvez ajuster cette valeur (60 = rapide, 30 = lent, 15 = très lent)
+clock = pygame.time.Clock()
+
 # Fonction permettant d'afficher un texte
 
 
@@ -24,6 +29,27 @@ def get_bonus():
             b.kill()  
 
 
+def confirm_quit(screen):
+    """Demande confirmation avant de quitter le jeu"""
+    # Afficher le message de confirmation
+    Screen.display_text("Êtes-vous sûr de vouloir quitter ?", (255, 255, 255), 400, 250, "Calibri", 25, screen, True)
+    Screen.display_text("Appuyez sur O (Oui) ou N (Non)", (255, 255, 255), 400, 280, "Calibri", 20, screen, True)
+    pygame.display.flip()
+    
+    # Attendre la réponse de l'utilisateur
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_o:  # O pour Oui
+                    return True
+                elif event.key == pygame.K_n:  # N pour Non
+                    return False
+                elif event.key == pygame.K_ESCAPE:  # Échap pour annuler
+                    return False
+
+
 def update_ecran():
     ecran.fill(couleur)
     ecran.blit(image_fond, [0, 0])
@@ -33,7 +59,8 @@ def update_ecran():
     Screen.display_score(screen, score)
                 
 
-pygame.key.set_repeat(5, 5)
+# Réduction de la répétition des touches pour un contrôle plus fluide
+pygame.key.set_repeat(100, 50)  # Délai initial 100ms, répétition toutes les 50ms
 couleur = (54, 110, 34)
 
 
@@ -57,15 +84,29 @@ while True:
     while not game_over:
         game_over = Vaisseau.hit_ship(joueur, projectiles)
         update_ecran()
-        # get_bonus()
-        Bonus.receive_bonus(joueur, bonus)
+        
+        # Récupération des bonus et mise à jour du score
+        bonus_score = Bonus.receive_bonus(joueur, bonus)
+        score += bonus_score
+        
         pygame.display.flip()
         projectiles.update()
+        
+        # Contrôle du framerate pour ralentir le jeu
+        clock.tick(FPS)
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.display.quit()
                 pygame.quit()
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    # Demander confirmation avant de quitter
+                    if confirm_quit(screen):
+                        pygame.display.quit()
+                        pygame.quit()
+                        sys.exit()
             elif event.type == creation_proj:
                 projectile = random_bullet(3)
                 projectiles.add(projectile)
