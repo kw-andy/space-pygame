@@ -11,7 +11,8 @@ class Vaisseau(pygame.sprite.Sprite):
 
 
     def deplace(self, touche):
-        options = {"up": (0, -10), "down": (0, +10), "left": (-10, 0), "right": (+10, 0)}
+        # Réduction de la vitesse de déplacement de 10 à 5 pixels
+        options = {"up": (0, -5), "down": (0, +5), "left": (-5, 0), "right": (+5, 0)}
         if touche in options.keys():
             dx, dy = options[touche]
             self.rect.x += dx

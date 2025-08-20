@@ -31,5 +31,4 @@ class Bonus(pygame.sprite.Sprite):
             if pygame.sprite.collide_mask(joueur, b):
                 score += 10
                 b.kill()
-            return score
         return score
