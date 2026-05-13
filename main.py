@@ -3,6 +3,7 @@ from pygame.locals import K_r, K_q, K_ESCAPE
 
 from Vaisseau import *
 from Bullet import *
+from Bullet import PlayerBullet
 from Bonus import Bonus
 from Display import Screen
 
@@ -70,6 +71,7 @@ while True:
     vaisseaux.add(joueur)
     projectiles = pygame.sprite.Group()
     bonus = pygame.sprite.Group()
+    tirs_joueur = pygame.sprite.Group()
 
     creation_proj = pygame.USEREVENT + 1
     pygame.time.set_timer(creation_proj, 1000)
@@ -84,13 +86,18 @@ while True:
     while not game_over:
         game_over = Vaisseau.hit_ship(joueur, projectiles)
         update_ecran()
-        
+        tirs_joueur.draw(ecran)
+
+        # Collision tirs joueur vs lasers ennemis
+        pygame.sprite.groupcollide(tirs_joueur, projectiles, True, True)
+
         # Récupération des bonus et mise à jour du score
         bonus_score = Bonus.receive_bonus(joueur, bonus)
         score += bonus_score
-        
+
         pygame.display.flip()
         projectiles.update()
+        tirs_joueur.update()
         
         # Contrôle du framerate pour ralentir le jeu
         clock.tick(FPS)
@@ -102,11 +109,13 @@ while True:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == K_ESCAPE or event.key == K_q:
-                    # Demander confirmation avant de quitter
                     if confirm_quit(screen):
                         pygame.display.quit()
                         pygame.quit()
                         sys.exit()
+                elif event.key == pygame.K_SPACE:
+                    tir = PlayerBullet(joueur.rect.centerx, joueur.rect.top)
+                    tirs_joueur.add(tir)
             elif event.type == creation_proj:
                 projectile = random_bullet(3)
                 projectiles.add(projectile)

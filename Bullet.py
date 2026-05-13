@@ -61,3 +61,18 @@ class Bullet(pygame.sprite.Sprite):
             self.image = pygame.transform.rotate(self.image, 90)
         elif self.vspeed > 0:
             self.image = pygame.transform.rotate(self.image, 180)
+
+
+class PlayerBullet(pygame.sprite.Sprite):
+    def __init__(self, xpos, ypos):
+        super(PlayerBullet, self).__init__()
+        self.image = pygame.image.load("Pictures/Lasers/Laser.png")
+        self.rect = self.image.get_rect()
+        self.rect.centerx = xpos
+        self.rect.y = ypos
+        self.vspeed = -8
+
+    def update(self):
+        self.rect.y += self.vspeed
+        if self.rect.y < -self.rect.height:
+            self.kill()
